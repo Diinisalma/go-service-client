@@ -16,10 +16,10 @@ type RestClient struct {
 	baseURL    string
 }
 
-func NewRestClient(baseUrl string) *RestClient {
+func NewRestClient(baseUrl string, timeout time.Duration) *RestClient {
 	return &RestClient{
 		httpClient: &http.Client{
-			Timeout: 30 * time.Second, // Ini untuk timeout http client mulai dari buka koneksi TCP sampai pembacaan response body
+			Timeout: timeout, // Ini untuk timeout http client mulai dari buka koneksi TCP sampai pembacaan response body
 		},
 		baseURL: baseUrl,
 	}

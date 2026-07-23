@@ -31,17 +31,17 @@ func callTimeout(ctx context.Context, c *commons.RestClient, path string, payloa
 	return resp.Result, nil
 }
 
-func Addition(ctx context.Context, c *commons.RestClient, payload entities.NumbersReq) (int32, error) {
-	res, err := callTimeout(ctx, c, "/math/addition", payload, 30*time.Second)
+func Addition(ctx context.Context, c *commons.RestClient, payload entities.NumbersReq, timeout time.Duration) (int32, error) {
+	res, err := callTimeout(ctx, c, "/math/addition", payload, timeout)
 	return res, err
 }
 
-func Subtraction(ctx context.Context, c *commons.RestClient, payload entities.NumbersReq) (int32, error) {
-	res, err := callTimeout(ctx, c, "/math/subtraction", payload, 30*time.Second)
+func Subtraction(ctx context.Context, c *commons.RestClient, payload entities.NumbersReq, timeout time.Duration) (int32, error) {
+	res, err := callTimeout(ctx, c, "/math/subtraction", payload, timeout)
 	return res, err
 }
 
-func Multiply(ctx context.Context, c *commons.RestClient, payload entities.NumbersReq) (int32, error) {
-	res, err := callTimeout(ctx, c, "/math/multiply", payload, 10*time.Second)
+func Multiply(ctx context.Context, c *commons.RestClient, payload entities.NumbersReq, timeout time.Duration) (int32, error) {
+	res, err := callTimeout(ctx, c, "/math/multiply", payload, timeout)
 	return res, err
 }
