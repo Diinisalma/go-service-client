@@ -1,11 +1,14 @@
 package entities
 
-type NumbersReq struct {
-	A int32 `json:"a"`
-	B int32	`json:"b"`
+import "context"
+
+type Numbers struct {
+	A int32
+	B int32
 }
 
-type NumbersResp struct {
-	Error string `json:"error,omitempty"`
-	Result int32 `json:"result,omitempty"`
+type MathGateway interface {
+	FetchMultiply(ctx context.Context, numbers Numbers) (int32, error)
+	FetchSubtraction(ctx context.Context, numbers Numbers) (int32, error)
+	FetchAddition(ctx context.Context, numbers Numbers) (int32, error)
 }

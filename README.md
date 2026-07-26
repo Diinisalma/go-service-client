@@ -38,7 +38,7 @@ Lapisan arsitektur:
 
   Server diharapkan berjalan di `http://localhost:1323` (dapat diubah di `cmd/main.go`).
 
-  Contoh server yang kompatibel: [go-service-diini](https://github.com/diiniS/go-service-diini)
+  Contoh server yang kompatibel: [mini_project-service-math](https://github.com/diiniS/mini_project-service-math)
 
 ## Instalasi
 
