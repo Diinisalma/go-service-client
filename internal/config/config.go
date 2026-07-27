@@ -5,9 +5,13 @@ import (
 	"time"
 )
 
-type ClientConfig struct {
+type HttpClientConfig struct {
 	BaseURL string
 	Timeout time.Duration
+}
+
+type GrpcClientConfig struct {
+	Address string
 }
 
 type TimeoutConfig struct {
@@ -17,13 +21,14 @@ type TimeoutConfig struct {
 }
 
 type Config struct {
-	Client  ClientConfig
-	Timeout TimeoutConfig
+	HttpClient HttpClientConfig
+	Timeout    TimeoutConfig
+	GrpcClient GrpcClientConfig
 }
 
 func Load() *Config {
 	return &Config{
-		Client: ClientConfig{
+		HttpClient: HttpClientConfig{
 			BaseURL: getEnv("BASE_URL", "http://localhost:1323"),
 			Timeout: getEnvDuration("TIMEOUT_CLIENT", 30*time.Second),
 		},
@@ -31,6 +36,9 @@ func Load() *Config {
 			Addition:    getEnvDuration("TIMEOUT_ADDITION", 60*time.Second),
 			Multiply:    getEnvDuration("TIMEOUT_MULTIPLY", 3*time.Second),
 			Subtraction: getEnvDuration("TIMEOUT_SUBTRACTION", 3*time.Second),
+		},
+		GrpcClient: GrpcClientConfig{
+			Address: getEnv("GRPC_ADDR", "localhost:50052"),
 		},
 	}
 }
